@@ -167,6 +167,9 @@
                     success:function(data){
                         if(data.result=='success'){
                             $(this).prop("disabled",true);
+                            //alert(encodeURI($from_input));
+                            $from_input=encodeURI($from_input);
+                            $to_input=encodeURI($to_input);
                             $("#link").html("http://119.29.169.103:8084/?from="+$from_input+"&to="+$to_input);
                         }else{
                             $(this).prop("disabled",false);
