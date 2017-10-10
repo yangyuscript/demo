@@ -165,7 +165,7 @@
                     },
                     dataType:'json',
                     success:function(data){
-                        if(data.result=='success'){
+                        if(data.result=='success'){:
                             $(this).prop("disabled",true);
                             //alert(encodeURI($from_input));
                             $from_input=encodeURI($from_input);
