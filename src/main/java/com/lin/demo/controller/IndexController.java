@@ -6,6 +6,7 @@ import com.lin.demo.mapper.ParyerMapper;
 import com.lin.demo.mapper.UserMapper;
 import com.lin.demo.utils.TimeUtil;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.*;
@@ -34,6 +35,19 @@ public class IndexController {
         map.addAttribute("allParyerNum",paryerMapper.getAllNum());
 
         return "welcome";
+    }
+    @RequestMapping(value="/1024",method=RequestMethod.GET)
+    public String coder(ModelMap map,@RequestParam(value="from",required = false)String from,@RequestParam(value="to",required = false)String to) {
+        if (("").equals(from) || ("").equals(to) || from == null || to == null || from.length() > 8 || to.length() > 8) {
+            map.addAttribute("from", "某某某");
+            map.addAttribute("to", "某某某");
+        } else {
+            map.addAttribute("from", from);
+            map.addAttribute("to", to);
+        }
+        map.addAttribute("allParyerNum", paryerMapper.getAllNum()+1000);
+
+        return "1024";
     }
     @RequestMapping("/test")
     public String test(){
