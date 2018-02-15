@@ -25,19 +25,30 @@ public class IndexController {
     private ParyerMapper paryerMapper;
     @RequestMapping(value="/",method=RequestMethod.GET)
     public String welcome(ModelMap map,@RequestParam(value="from",required = false)String from,@RequestParam(value="to",required = false)String to){
-        if(("").equals(from)||("").equals(to)||from==null||to==null||from.length()>8||to.length()>8){
-            map.addAttribute("from","某某某");
-            map.addAttribute("to","某某某");
-        }else{
-            map.addAttribute("from",from);
-            map.addAttribute("to",to);
-        }
+        judge(map,from,to);
         map.addAttribute("allParyerNum",paryerMapper.getAllNum());
 
         return "welcome";
     }
     @RequestMapping(value="/1024",method=RequestMethod.GET)
     public String coder(ModelMap map,@RequestParam(value="from",required = false)String from,@RequestParam(value="to",required = false)String to) {
+        judge(map,from,to);
+        map.addAttribute("allParyerNum", paryerMapper.getAllNum()+1000);
+        return "1024";
+    }
+    @RequestMapping(value="/HappyNewYear",method=RequestMethod.GET)
+    public String happyny(ModelMap map,@RequestParam(value="from",required = false)String from,@RequestParam(value="to",required = false)String to) {
+        judge(map,from,to);
+        map.addAttribute("allParyerNum", paryerMapper.getAllNum()+1000);
+        return "HappyNewYear";
+    }
+    @RequestMapping(value="/testWebFont",method=RequestMethod.GET)
+    public String testWebFont(ModelMap map,@RequestParam(value="from",required = false)String from,@RequestParam(value="to",required = false)String to) {
+        judge(map,from,to);
+        map.addAttribute("allParyerNum", paryerMapper.getAllNum()+1000);
+        return "testWebFont";
+    }
+    public void judge(ModelMap map,String from,String to){
         if (("").equals(from) || ("").equals(to) || from == null || to == null || from.length() > 8 || to.length() > 8) {
             map.addAttribute("from", "某某某");
             map.addAttribute("to", "某某某");
@@ -45,9 +56,6 @@ public class IndexController {
             map.addAttribute("from", from);
             map.addAttribute("to", to);
         }
-        map.addAttribute("allParyerNum", paryerMapper.getAllNum()+1000);
-
-        return "1024";
     }
     @RequestMapping("/test")
     public String test(){
@@ -68,7 +76,7 @@ public class IndexController {
     public ModelAndView getInfo(@RequestParam("from")String from, @RequestParam("to")String to, @RequestParam("ip")String ip, @RequestParam("city")String city){
         System.out.println(from+" "+" "+to+" "+ip+" "+city);
         paryerMapper.insert(new Paryer(UUID.randomUUID().toString(),from,to,ip,city, TimeUtil.getTime()));
-        Map map=new HashMap();
+        Map map=new HashMap(16);
         map.put("result","success");
         return new ModelAndView(new MappingJackson2JsonView(),map);
     }

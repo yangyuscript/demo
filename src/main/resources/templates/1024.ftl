@@ -68,7 +68,7 @@
             <h2 class="ani" swiper-animate-effect="bounceInRight" swiper-animate-duration="0.5s" swiper-animate-delay="3s" style="text-align:right;">FROM ${from}</h2>
         </div>
         <div class="swiper-slide slide_two">
-            <img class="ani" swiper-animate-effect="fadeInUp" swiper-animate-duration="5s" swiper-animate-delay="0.3s style="width:20%;height:20%;" src="/images/moon.png"/>
+            <img class="ani" swiper-animate-effect="fadeInUp" swiper-animate-duration="5s" swiper-animate-delay="0.3s style="width:10%;height:10%;" src="/images/moon.png"/>
             <h3 class="ani" swiper-animate-effect="fadeInUp" swiper-animate-duration="0.5s" swiper-animate-delay="0.3s">
                 今天
             </h3>
@@ -84,7 +84,7 @@
             <h3 class="ani" swiper-animate-effect="fadeInUp" swiper-animate-duration="0.5s" swiper-animate-delay="4s">
                 过1024
             </h3>
-            <h3>已有<span style="font-size:70px;">${allParyerNum}</span>个程序猿/媛和你一起过1024！</h3>
+            <h4>已有<span style="font-size:70px;">${allParyerNum}</span>个程序猿/媛和你一起过1024！</h4>
         </div>
         <div class="swiper-slide slide_three">
                 <img class="ani" swiper-animate-effect="fadeInUp" swiper-animate-duration="1s" swiper-animate-delay="0.3s" src="/images/4.jpg" width="100%" height="25%"/>
